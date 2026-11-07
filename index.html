@@ -19,12 +19,12 @@
         }
         window.addEventListener("error", function (e) {
           var t = e && e.target;
-          if (t && (t.tagName === "SCRIPT" || t.tagName === "LINK")) show("ファイルを読み込めませんでした: " + (t.src || t.href));
-          else show("エラー: " + (e.message || "不明"));
+          if (t && (t.tagName === "SCRIPT" || t.tagName === "LINK")) show("Could not load file: " + (t.src || t.href));
+          else show("Error: " + (e.message || "unknown"));
         }, true);
-        window.addEventListener("unhandledrejection", function (e) { show("エラー: " + (e.reason && e.reason.message || e.reason)); });
+        window.addEventListener("unhandledrejection", function (e) { show("Error: " + (e.reason && e.reason.message || e.reason)); });
         setTimeout(function () {
-          if (document.getElementById("boot")) show("30秒たっても画面が出ません。通信が遅いか、このブラウザが対応していない可能性があります。再読み込みしてみてください。");
+          if (document.getElementById("boot")) show("The page did not load within 30 seconds. Your connection may be slow or this browser may not be supported. Please reload.");
         }, 30000);
       })();
     </script>
