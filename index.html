@@ -28,13 +28,22 @@
         }, 30000);
       })();
     </script>
-    <script type="module" crossorigin src="./app.js?v=mwcxhbu4"></script>
-    <link rel="stylesheet" crossorigin href="./index.css?v=mwcxhbu4">
+    <script type="module" crossorigin src="./app.js?v=mwcxrvjk"></script>
+    <link rel="stylesheet" crossorigin href="./index.css?v=mwcxrvjk">
   </head>
   <body>
     <div id="root">
       <div id="boot">
-        <b>◆ LPREX</b><br />Loading…
+        <b id="boot-name">◆ LPREX</b><br />Loading…
+        <script>
+          // MYLP のドメインで開いたら、読み込み中の表示も MYLP にする
+          (function () {
+            var h = location.hostname, q = location.search, b = null;
+            try { b = localStorage.getItem("lprex.brand"); } catch (e) {}
+            var my = /mylp|my-pool|mypool/.test(h) || /brand=mylp/.test(q) || (!/lprex/.test(h) && !/brand=lprex/.test(q) && b === "mylp");
+            if (my) { var el = document.getElementById("boot-name"); el.textContent = "◆ MYLP"; el.style.color = "#5aa8ff"; document.title = "MYLP | LP Auto-Rebalancing System"; }
+          })();
+        </script>
         <div id="boot-err"></div>
       </div>
     </div>
